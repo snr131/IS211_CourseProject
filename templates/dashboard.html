@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+<h1>{{ current_user }}'s Book Catalog</h1>
+{% for book in catalog %}
+<div class="card">
+    <div class="card-body">
+      <h3>{{ book.title }}</h3>
+      <h6>Added to catalog by {{current_user }} on {{ book.date_added_to_catalog }}</h6>
+      <h5>Author: {{ book.author }}</h5>
+      <h5>ISBN 10: {{ book.isbn_10 }}</h5>
+      <h5>Page Count: {{ book.page_count }}</h5>
+      <h5>Publication Date: {{ book.publication_date }}</h5>
+      <h5>Average User Rating: {{ book.rating }}</h5><br>
+      <img src="{{ book.image_url }}" alt="Book image unavailable"><br><br>
+      
+      <a href="{{ url_for('delete', book_id=book.id) }}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock main %}

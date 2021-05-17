@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+<div class="container-fluid">
+    <form action="{{ url_for('add') }}" method="post">
+        {{ form.csrf_token }}
+        <div class="row">
+            <h3>Enter ISBN 10</h3>
+            <div class="col">
+                {{ form.isbn_10(class="form-control") }}
+            </div>
+            <div class="col">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock main %}
