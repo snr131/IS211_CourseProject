@@ -6,6 +6,7 @@ from models import Book
 from datetime import datetime
 import json
 from urllib.request import urlopen
+from auth import *
 
 
 @app.route('/', methods=['GET'])
