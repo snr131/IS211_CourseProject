@@ -31,7 +31,7 @@
     
         <fieldset class="password">
             {{ form.password.label }}
-            {{ form.password }}
+            {{ form.password(placeholder='password') }}
             {% if form.password.errors %}
             <ul class="errors">
                 {% for error in form.password.errors %}

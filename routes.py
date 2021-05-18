@@ -1,6 +1,6 @@
 from flask_login import login_required, logout_user, current_user
 from bookcatalog import app, db
-from flask import render_template, redirect,url_for, flash
+from flask import render_template, redirect,url_for, flash, get_flashed_messages
 import forms
 from models import Book
 from datetime import datetime
@@ -30,9 +30,15 @@ def add():
         isbn_10 = form.isbn_10.data
         resp = urlopen(api + isbn_10)
         book_data = json.load(resp)
+    
+        try:
+            volume_info = book_data["items"][0]["volumeInfo"]
+        except:
+            flash('Book not found')
+            return redirect(url_for('index'))
         
-        volume_info = book_data["items"][0]["volumeInfo"]
         title = volume_info['title']
+        
         try:
             author = volume_info["authors"][0]
         except:

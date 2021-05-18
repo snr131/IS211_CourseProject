@@ -17,7 +17,7 @@ class LoginForm(FlaskForm):
 
 
 class AddBookForm(FlaskForm):
-    isbn_10 = StringField('ISBN_10', validators=[DataRequired()])
+    isbn_10 = StringField('ISBN_10', validators=[DataRequired(), Length(min=10, max=10, message='Enter a 10 digit ISBN 10')])
     submit = SubmitField('Search')
 
 

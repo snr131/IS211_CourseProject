@@ -9,6 +9,12 @@
             <h3>Enter ISBN 10</h3>
             <div class="col">
                 {{ form.isbn_10(class="form-control") }}
+                {% if form.isbn_10.errors %}
+                <ul class="errors">
+                    {% for error in form.isbn_10.errors %}
+                    <li>{{ error }}</li>{% endfor %}
+                </ul>
+                {% endif %}
             </div>
             <div class="col">
                 {{ form.submit(class="btn btn-primary") }}
